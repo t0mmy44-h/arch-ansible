@@ -18,3 +18,9 @@
     name: intel-ucode
     state: present
   when: ansible_facts['processor'][1].find("Intel") != -1
+
+- name: Install AMD Microcode
+  community.general.pacman:
+    name: amd-ucode
+    state: present
+  when: ansible_facts['processor'][1].find("AMD") != -1
