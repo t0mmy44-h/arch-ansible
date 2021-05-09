@@ -47,8 +47,8 @@
 - name: Configure Pacman
   include_tasks: pacman.yml
 
-# - name: Add User
-#   include_tasks: user.yml
+- name: Add User
+  include_tasks: user.yml
 
 # - name: Configure AUR support
 #   include_tasks: aur.yml

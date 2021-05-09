@@ -1,0 +1,14 @@
+# These two variables are used by multiple groups/hosts/roles/etc
+vault_secret_mount: "/dalmura"
+vault_secret_key_prefix: "infrastructure/ansible"
+
+local_user_tbh: "{{ vault_secret_key_prefix }}/local_users/tbh"
+
+local_users:
+  tbh:
+    password: "{{ lookup('hashivault', local_user_tbh, 'password', mount_point=vault_secret_mount, version=2) }}"
+    groups: "media,docker"
+    key: |
+      {{ lookup('hashivault', local_user_tbh, 'key0', mount_point=vault_secret_mount, version=2) }}
+      {{ lookup('hashivault', local_user_tbh, 'key1', mount_point=vault_secret_mount, version=2) }}
+      {{ lookup('hashivault', local_user_tbh, 'key2', mount_point=vault_secret_mount, version=2) }}

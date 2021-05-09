@@ -1,0 +1,17 @@
+---
+- name: create local users
+  user:
+    name: "{{ item.key }}"
+    password: "{{ item.value.password }}"
+    groups: "{{ item.value.groups }}"
+    shell: "{{ item.value.shell | default('/bin/bash') }}"
+    append: "{{ item.value.groups | default({}) | ternary('yes', omit, omit) }}"
+  loop: "{{ local_users | dict2items }}"
+
+- name: create local user authorized_key entries
+  authorized_key:
+    user: "{{ item.key }}"
+    key: "{{ item.value.key }}"
+    exclusive: True
+  loop: "{{ local_users | dict2items }}"
+  when: item.value.key is defined
