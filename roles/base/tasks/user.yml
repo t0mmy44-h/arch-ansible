@@ -8,6 +8,7 @@
     append: "{{ item.value.groups | default({}) | ternary('yes', omit, omit) }}"
     generate_ssh_key: yes
     ssh_key_file: "/home/{{ item.key }}/.ssh/{{ item.key }}@{{ ansible_facts['hostname'] }}"
+    ssh_key_comment: "/home/{{ item.key }}/.ssh/{{ item.key }}@{{ ansible_facts['hostname'] }}"
   loop: "{{ local_users | dict2items }}"
 
 - name: create local user authorized_key entries
@@ -17,3 +18,9 @@
     exclusive: True
   loop: "{{ local_users | dict2items }}"
   when: item.value.key is defined
+
+- name: wait until github done
+  wait_for:
+    path: /var/github-key-added
+    timeout: 300
+    msg: you haven't added the ssh key to github!

@@ -13,11 +13,12 @@
       - linux-firmware
       - sudo
       - netctl
+      - lvm2
+      - grub
+      - reflector
       - man-db
       - man-pages
       - texinfo
-      - lvm2
-      - grub
       - git
       - docker
       - docker-compose
