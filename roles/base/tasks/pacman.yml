@@ -1,0 +1,18 @@
+---
+- name: Pacman - Enable Color and ILoveCandy
+  replace:
+    path: /etc/pacman.conf
+    regexp: '{{ item.regexp }}'
+    replace: '{{ item.replace }}'
+  with_items:
+    - { regexp: '^#Color$', replace: 'Color' }
+
+- name: ILoveCandy Animation
+  lineinfile:
+    path: /etc/pacman.conf
+    regexp: '^Color$'
+    insertafter: '^Color$'
+    line: 'ILoveCandy'
+
+- name: Use Australian Mirrors
+  command: reflector --country Australia --latest 50 --protocol https --sort rate --save /etc/pacman.d/mirrorlist

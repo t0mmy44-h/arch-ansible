@@ -11,6 +11,18 @@
       - base-devel
       - linux
       - linux-firmware
+      - sudo
+      - netctl
+      - man-db
+      - man-pages
+      - texinfo
+      - lvm2
+      - grub
+      - git
+      - docker
+      - docker-compose
+      - openssh
+      - neovim
     state: present
 
 - name: Install Intel Microcode
@@ -24,3 +36,9 @@
     name: amd-ucode
     state: present
   when: ansible_facts['processor'][1].find("AMD") != -1
+
+- name: Configure Pacman
+  include_tasks: pacman.yml
+
+# - name: Add User
+#   include_tasks: user.yml
