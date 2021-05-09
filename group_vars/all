@@ -7,7 +7,7 @@ local_user_tbh: "{{ vault_secret_key_prefix }}/local_users/tbh"
 local_users:
   tbh:
     password: "{{ lookup('hashivault', local_user_tbh, 'password', mount_point=vault_secret_mount, version=2) }}"
-    groups: "media,docker"
+    groups: "wheel,docker"
     key: |
       {{ lookup('hashivault', local_user_tbh, 'key0', mount_point=vault_secret_mount, version=2) }}
       {{ lookup('hashivault', local_user_tbh, 'key1', mount_point=vault_secret_mount, version=2) }}
