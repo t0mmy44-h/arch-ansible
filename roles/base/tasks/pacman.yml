@@ -1,5 +1,5 @@
 ---
-- name: Pacman - Enable Color and ILoveCandy
+- name: Pacman - Enable Color
   replace:
     path: /etc/pacman.conf
     regexp: '{{ item.regexp }}'

@@ -23,7 +23,14 @@
       - docker-compose
       - openssh
       - neovim
+      - ansible
+      - python3
+      - python-pip
     state: present
+
+- name: Install Hashicorp Python stuff
+  pip:
+    name: ansible-modules-hashivault
 
 - name: Install Intel Microcode
   community.general.pacman:
@@ -42,3 +49,6 @@
 
 # - name: Add User
 #   include_tasks: user.yml
+
+# - name: Configure AUR support
+#   include_tasks: aur.yml
