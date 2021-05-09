@@ -11,4 +11,3 @@ local_users:
     key: |
       {{ lookup('hashivault', local_user_tbh, 'key0', mount_point=vault_secret_mount, version=2) }}
       {{ lookup('hashivault', local_user_tbh, 'key1', mount_point=vault_secret_mount, version=2) }}
-      {{ lookup('hashivault', local_user_tbh, 'key2', mount_point=vault_secret_mount, version=2) }}
