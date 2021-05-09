@@ -1,0 +1,20 @@
+---
+- name: Update System
+  community.general.pacman:
+    update_cache: yes
+    upgrade: yes
+
+- name: Ensure Base
+  community.general.pacman:
+    name:
+      - base
+      - base-devel
+      - linux
+      - linux-firmware
+    state: present
+
+- name: Install Intel Microcode
+  community.general.pacman:
+    name: intel-ucode
+    state: present
+    when: ansible_facts['processor'][1].find("Intel") != -1

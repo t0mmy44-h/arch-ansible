@@ -3,11 +3,5 @@
   connection: local
   become: true
 
-
-  tasks:
-  - name: install packages
-    package:
-      name:
-        - htop
-        - neovim
-        - tmux
+  roles:
+    - base
