@@ -17,4 +17,4 @@
   community.general.pacman:
     name: intel-ucode
     state: present
-    when: ansible_facts['processor'][1].find("Intel") != -1
+  when: ansible_facts['processor'][1].find("Intel") != -1
