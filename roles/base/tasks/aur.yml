@@ -41,4 +41,5 @@
   when: not yay_installed.stat.exists
 
 - name: Install ansible-aur-git
+  become_user: tbh
   command: yay -Sa --noconfirm ansible-aur-git
