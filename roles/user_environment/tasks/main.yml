@@ -96,3 +96,14 @@
       - bluez-utils
       - rsync
       - openconnect
+
+- name: Enable core services
+  ansible.builtin.systemd:
+    state: started
+    enabled: yes
+    name: "{{ item }}"
+  loop:
+    - bluetooth
+    - lightdm
+    - docker
+    - dhcpcd
