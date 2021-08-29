@@ -1,0 +1,24 @@
+---
+- name: Set MAKEFLAGS
+  lineinfile:
+    path: /etc/makepkg.conf
+    regexp: '^MAKEFLAGS'
+    line: 'MAKEFLAGS=-j$(expr $(nproc) - 1)'
+
+- name: Check for yay
+  stat:
+    path: /usr/bin/yay
+  register: yay_installed
+
+- name: Clone yay
+  git:
+    repo: https://aur.archlinux.org/yay.git
+    dest: /tmp/yay
+  when: not yay_installed.stat.exists
+
+- name: Install yay
+  when: not yay_installed.stat.exists
+  command:
+    chdir: /tmp/yay
+    cmd: makepkg -si
+  
