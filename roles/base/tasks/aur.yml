@@ -22,5 +22,5 @@
   become_user: tbh
   command:
     chdir: /tmp/yay
-    cmd: makepkg -si
+    cmd: makepkg -si --noconfirm
   
