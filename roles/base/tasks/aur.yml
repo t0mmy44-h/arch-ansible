@@ -23,4 +23,8 @@
   command:
     chdir: /tmp/yay
     cmd: makepkg -si --noconfirm
+
+- name: Install ansible-aur-git
+  when: yay_installed.stat.exists
+  command: yay -Sa --noconfirm ansible-aur-git
   
