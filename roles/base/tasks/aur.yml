@@ -18,6 +18,7 @@
 
 - name: Install yay
   when: not yay_installed.stat.exists
+  become_user: tbh
   command:
     chdir: /tmp/yay
     cmd: makepkg -si
