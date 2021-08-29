@@ -4,7 +4,4 @@
   become: true
 
   roles:
-    - base
-    # - new_role
-    # - laptop
-    # - ui
+    - new_role
