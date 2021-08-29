@@ -5,26 +5,40 @@
     regexp: '^MAKEFLAGS'
     line: 'MAKEFLAGS=-j$(expr $(nproc) - 1)'
 
+- name: Turn off build compression
+  linesinfile:
+    path: /etc/makepkg.conf
+    regexp: "{{ item.regex }}"
+    line: "{{ item.line }}"
+  loop:
+    - regex: '^COMPRESSGZ='
+      line: 'COMPRESSGZ=(cat)' 
+    - regex: '^COMPRESSBZ2='
+      line: 'COMPRESSBZ2=(cat)'
+    - regex: '^COMPRESSXZ='
+      line: 'COMPRESSXZ=(cat)'
+    - regex: '^COMPRESSZST='
+      line: 'COMPRESSZST=(cat)'
+    - regex: '^COMPRESSLRZ='
+      line: 'COMPRESSLRZ=(cat)'
+    - regex: '^COMPRESSLZO='
+      line: 'COMPRESSLZO=(cat)'
+    - regex: '^COMPRESSZ='
+      line: 'COMPRESSZ=(cat)'
+    - regex: '^COMPRESSLZ4='
+      line: 'COMPRESSLZ4=(cat)'
+    - regex: '^COMPRESSLZ='
+      line: 'COMPRESSLZ=(cat)'
+
 - name: Check for yay
   stat:
     path: /usr/bin/yay
   register: yay_installed
 
-- name: Clone yay
-  when: not yay_installed.stat.exists
-  become_user: tbh
-  git:
-    repo: https://aur.archlinux.org/yay.git
-    dest: /tmp/yay
-
 - name: Install yay
-  when: not yay_installed.stat.exists
+  include_tasks: yay.yml
   become_user: tbh
-  command:
-    chdir: /tmp/yay
-    cmd: makepkg -si --noconfirm
+  when: not yay_installed.stat.exists
 
 - name: Install ansible-aur-git
-  when: yay_installed.stat.exists
   command: yay -Sa --noconfirm ansible-aur-git
-  

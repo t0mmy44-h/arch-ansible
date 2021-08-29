@@ -1,0 +1,10 @@
+---
+- name: Clone yay
+  git:
+    repo: https://aur.archlinux.org/yay.git
+    dest: /tmp/yay
+
+- name: Install yay
+  command:
+    chdir: /tmp/yay
+    cmd: makepkg -si --noconfirm
