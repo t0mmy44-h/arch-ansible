@@ -1,0 +1,99 @@
+---
+- name: Install Xorg and display
+  community.general.pacman:
+    state: present
+    name:
+      - xorg
+      - autorandr
+      - arandr
+      - picom
+      - feh
+      - lxappearance
+      - redshift
+      - lightdm
+      - lightdm-gtk-greeter
+      - xautolock
+
+- name: Configure redshift
+  copy:
+    dest: /etc/redshift.conf
+    content: |
+      ; Global
+      [redshift]
+      temp-day=6500
+      temp-night=2750
+      brightness-day=1
+      brightness-night=0.7
+      location-provider=manual
+      adjustment-method=randr
+      fade=1
+      dawn-time=06:00-08:00
+      dusk-time=18:30-22:00
+      [manual]
+      lat=-37.8136
+      long=144.9631
+
+- name: Install Audio
+  community.general.pacman:
+    state: present
+    name:
+      - alsa-utils
+      - pulseaudio
+      - pulsemixer
+      - pamixer
+      - pavucontrol
+
+- name: Install i3-gaps
+  community.general.pacman:
+    state: present
+    name:
+      - i3-gaps
+      - dunst
+      - i3blocks
+      - rofi
+      - sxiv
+      - scrot
+
+- name: Install applications
+  community.general.pacman:
+    state: present
+    name:
+      - solaar
+      - firefox
+      - zathura
+      - zathura-cb
+      - zathura-pdf-mupdf
+      - signal-desktop
+      - vlc
+      - caprine
+      - syncthing
+
+- name: Install Terminal apps
+  community.general.pacman:
+    state: present
+    name:
+      - alacritty
+      - fzf
+      - ranger
+      - neofetch
+      - htop
+      - ncdu
+      - screen
+
+- name: Install utilities
+  community.general.pacman:
+    state: present
+    name:
+      - unrar
+      - unzip
+      - p7zip
+      - strace
+      - clipmenu
+      - clipnotify
+      - cpupower
+      - keychain
+      - exfat-utils
+      - bluez
+      - bluez-utils
+      - rsync
+      - openconnect

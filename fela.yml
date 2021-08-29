@@ -4,4 +4,9 @@
   become: true
 
   roles:
-    - new_role
+    - base
+    - user_environment
+    # - dotfiles
+    # - laptop
+    # - gaming
+    # - work
