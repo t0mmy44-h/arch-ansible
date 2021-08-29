@@ -1,4 +1,7 @@
 ---
+- name: Configure Pacman
+  include_tasks: pacman.yml
+
 - name: Update System
   community.general.pacman:
     update_cache: yes
@@ -45,11 +48,8 @@
     state: present
   when: ansible_facts['processor'][1].find("AMD") != -1
 
-- name: Configure Pacman
-  include_tasks: pacman.yml
-
 - name: Add User
   include_tasks: user.yml
 
-# - name: Configure AUR support
-#   include_tasks: aur.yml
+- name: Configure AUR support
+  include_tasks: aur.yml
