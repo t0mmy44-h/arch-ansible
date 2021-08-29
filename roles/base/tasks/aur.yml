@@ -11,10 +11,11 @@
   register: yay_installed
 
 - name: Clone yay
+  when: not yay_installed.stat.exists
+  become_user: tbh
   git:
     repo: https://aur.archlinux.org/yay.git
     dest: /tmp/yay
-  when: not yay_installed.stat.exists
 
 - name: Install yay
   when: not yay_installed.stat.exists
