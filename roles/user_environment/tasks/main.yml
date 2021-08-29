@@ -92,7 +92,6 @@
       - clipnotify
       - cpupower
       - keychain
-      - exfat-utils
       - bluez
       - bluez-utils
       - rsync
