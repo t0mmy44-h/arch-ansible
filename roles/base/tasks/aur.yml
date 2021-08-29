@@ -36,7 +36,7 @@
   register: yay_installed
 
 - name: Install yay
-  include_tasks: yay.yml
+  import_tasks: yay.yml
   become_user: tbh
   when: not yay_installed.stat.exists
 
