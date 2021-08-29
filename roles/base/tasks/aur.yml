@@ -6,7 +6,7 @@
     line: 'MAKEFLAGS=-j$(expr $(nproc) - 1)'
 
 - name: Turn off build compression
-  linesinfile:
+  lineinfile:
     path: /etc/makepkg.conf
     regexp: "{{ item.regex }}"
     line: "{{ item.line }}"
