@@ -2,6 +2,7 @@
 - name: Clone dotfiles
   git:
     repo: git@github.com:t0mmy44-h/cfg.git
+    accept_hostkey: yes
     bare: yes
     dest: "/home/{{ item.key }}/.cfg"
     key_file: "/home/{{ item.key }}/.ssh/tbh@{{ ansible_facts['hostname'] }}"
