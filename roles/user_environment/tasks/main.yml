@@ -112,7 +112,6 @@
 - name: Enable user services
   become_user: tbh
   ansible.builtin.systemd:
-    state: started
     enabled: yes
     scope: user
     name: "{{ item }}"
