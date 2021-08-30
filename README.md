@@ -5,9 +5,11 @@ Sets up a new desktop or laptop with my Arch Linux environment.
 see [vimwiki](../../notes/vimwiki/linuxenv/arch-bootstrap.md) for a list of packages
 
 ## TODO
-- [ ] enable and start sshd
+- [X] install userspace things
+  - [ ] break down into files
 - [ ] clone down dotfiles (ordering?)
-- [ ] install userspace things
+  - [ ] checkout after clone
+  - [ ] figure out what's missing from installs (fonts etc.)
 - [ ] install laptop things
 - [ ] prerequisites
   - [ ] ansible.sh
