@@ -97,6 +97,7 @@
       - bluez-utils
       - rsync
       - openconnect
+      - jq
 
 - name: Enable core services
   ansible.builtin.systemd:
@@ -121,3 +122,7 @@
     - pulseaudio
     - syncthing
     - dunst
+
+- name: Pull down dotfiles
+  import_tasks: dotfiles.yml
+  become_user: tbh
