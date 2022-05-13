@@ -3,8 +3,8 @@
   git:
     repo: git@github.com:t0mmy44-h/cfg.git
     accept_hostkey: yes
-    dest: "/home/{{ item.key }}/"
-    separate_git_dir: "/home/{{ item.key }}/.cfg"
+    bare: yes
+    dest: "/home/{{ item.key }}/.cfg"
     key_file: "/home/{{ item.key }}/.ssh/tbh@{{ ansible_facts['hostname'] }}"
   loop: "{{ local_users | dict2items }}"
 
