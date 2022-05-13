@@ -1,10 +1,15 @@
 ---
+- name: Ensure HOME/dev
+  file:
+    path: "home/{{ item.key }}/dev"
+    state: directory
+  loop: "{{ local_users | dict2items }}"
+
 - name: Clone dotfiles
   git:
-    repo: git@github.com:t0mmy44-h/cfg.git
+    repo: git@github.com:t0mmy44-h/stashdot.git
     accept_hostkey: yes
-    bare: yes
-    dest: "/home/{{ item.key }}/.cfg"
+    dest: "/home/{{ item.key }}/dev/stashdot"
     key_file: "/home/{{ item.key }}/.ssh/tbh@{{ ansible_facts['hostname'] }}"
   loop: "{{ local_users | dict2items }}"
 
