@@ -13,3 +13,8 @@
     key_file: "/home/{{ item.key }}/.ssh/tbh@{{ ansible_facts['hostname'] }}"
   loop: "{{ local_users | dict2items }}"
 
+- name: Install Stow
+  community.general.pacman:
+    state: present
+    name:
+      - stow
