@@ -33,16 +33,7 @@
       [manual]
       lat=-37.8136
       long=144.9631
-
-- name: Install Audio
-  community.general.pacman:
-    state: present
-    name:
-      - alsa-utils
-      - pulseaudio
-      - pulsemixer
-      - pamixer
-      - pavucontrol
+     
 
 - name: Install i3-gaps
   community.general.pacman:
@@ -119,7 +110,6 @@
   loop:
     - redshift
     - clipmenud
-    - pulseaudio
     - syncthing
     - dunst
 
