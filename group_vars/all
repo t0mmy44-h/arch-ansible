@@ -11,3 +11,36 @@ local_users:
     key: |
       {{ lookup('hashivault', local_user_tbh, 'key0', mount_point=vault_secret_mount, version=2) }}
       {{ lookup('hashivault', local_user_tbh, 'key1', mount_point=vault_secret_mount, version=2) }}
+
+bplugins:
+  - alias-completion
+  - aws
+  - base
+  - docker-compose
+  - docker
+  - fzf
+  - git
+  - hub
+  - ssh
+  - tmux
+
+baliases:
+  - ag
+  - docker
+  - docker-compose
+  - general
+  - git
+  - systemd
+  - tmux
+
+bcompletions:
+  - bash-it
+  - docker
+  - docker-compose
+  - git
+  - hub
+  - pip3
+  - pip
+  - ssh
+  - system
+  - tmux
