@@ -28,7 +28,7 @@
     - tmux
   register: plugins_result
   changed_when: "plugins_result.stdout_lines | reject('match', '.* is already enabled.') | list | length > 0"
-  
+
 - name: bash_it aliases enable
   command: "/bin/bash -i -l -c \"bash-it enable alias {{ aliases|join(' ') }}\""
   aliases:
