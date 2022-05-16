@@ -79,7 +79,7 @@
     accept_hostkey: yes
     key_file: "/home/{{ item.key }}/.ssh/{{ item.key }}@{{ ansible_facts['hostname'] }}"
   loop: "{{ local_users | dict2items }}"
-  become_user: "{{ item.key }}"
+  become_user: tbh
 
 - name: Install utilities
   community.general.pacman:
