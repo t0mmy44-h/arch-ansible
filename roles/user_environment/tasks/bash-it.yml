@@ -22,6 +22,7 @@
 - name: Bash it plugins enable
   command:
     argv:
+      - /bin/bash -i -l -c
       - bash-it enable plugin
       - alias-completion
       - aws
@@ -39,6 +40,7 @@
 - name: bash_it aliases enable
   command:
     argv:
+      - /bin/bash -i -l -c
       - bash-it enable alias
       - ag
       - docker
@@ -53,6 +55,7 @@
 - name: bash_it completions enable
   command:
     argv:
+      - /bin/bash -i -l -c
       - bash-it enable completion
       - bash-it
       - docker
