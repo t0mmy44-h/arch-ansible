@@ -20,10 +20,10 @@
   loop: "{{ local_users | dict2items }}"
 
 - name: Bash it plugins enable
-  command: "/bin/bash -i -l -c \"bash-it enable plugin {{ items|join(' ') }}\""
+  command: "/bin/bash -i -l -c \"bash-it enable plugin {{ bplugs|join(' ') }}\""
   register: plugins_result
   changed_when: "plugins_result.stdout_lines | reject('match', '.* is already enabled.') | list | length > 0"
-  with_items:
+  bplugs:
     - alias-completion
     - aws
     - base
@@ -36,8 +36,8 @@
     - tmux
 
 - name: bash_it aliases enable
-  command: "/bin/bash -i -l -c \"bash-it enable alias {{ items|join(' ') }}\""
-  with_items:
+  command: "/bin/bash -i -l -c \"bash-it enable alias {{ baliases|join(' ') }}\""
+  baliases:
     - ag
     - docker
     - docker-compose
@@ -49,8 +49,8 @@
   changed_when: "aliases_result.stdout_lines | reject('match', '.* is already enabled.') | list | length > 0"
 
 - name: bash_it completions enable
-  command: "/bin/bash -i -l -c \"bash-it enable completion {{ items|join(' ') }}\""
-  with_items:
+  command: "/bin/bash -i -l -c \"bash-it enable completion {{ bcomps|join(' ') }}\""
+  bcomps:
     - bash-it
     - docker
     - docker-compose
