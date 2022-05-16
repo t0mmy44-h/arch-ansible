@@ -7,7 +7,13 @@
     key_file: "/home/{{ item.key }}/.ssh/{{ item.key }}@{{ ansible_facts['hostname'] }}"
   loop: "{{ local_users | dict2items }}"
 
-- name: Bash it theme shim
+- name: Bash it theme shim directory
+  file:
+    path: "/home/{{ item.key }}/.bash_it/do-what-I-say"
+    state: directory
+  loop: "{{ local_users | dict2items }}"
+
+- name: Bash it theme shim file
   file:
     path: "/home/{{ item.key }}/.bash_it/do-what-I-say/do-what-I-say.theme.bash"
     state: touch
