@@ -72,6 +72,15 @@
       - ncdu
       - screen
 
+- name: Install bash_it
+  git:
+    repo: git@github.com:Bash-it/bash-it.git
+    dest: "home/{{ item.key }}/.bash_it"
+    accept_hostkey: yes
+    key_file: "/home/{{ item.key }}/.ssh/{{ item.key }}@{{ ansible_facts['hostname'] }}"
+  loop: "{{ local_users | dict2items }}"
+  become_user: "{{ item.key }}"
+
 - name: Install utilities
   community.general.pacman:
     state: present
