@@ -4,6 +4,7 @@
     path: "home/{{ item.key }}/dev"
     state: directory
   loop: "{{ local_users | dict2items }}"
+  become_user: tbh
 
 - name: Clone dotfiles
   git:
@@ -12,6 +13,7 @@
     dest: "/home/{{ item.key }}/dev/stashdot"
     key_file: "/home/{{ item.key }}/.ssh/tbh@{{ ansible_facts['hostname'] }}"
   loop: "{{ local_users | dict2items }}"
+  become_user: tbh
 
 - name: Install Stow
   community.general.pacman:
