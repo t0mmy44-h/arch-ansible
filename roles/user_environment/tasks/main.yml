@@ -115,3 +115,9 @@
 
 - name: Pull down dotfiles
   import_tasks: dotfiles.yml
+
+- name: Fonts
+  aur:
+    use: yay
+    name:
+      - nerd-fonts-complete
