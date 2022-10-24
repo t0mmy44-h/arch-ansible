@@ -71,7 +71,7 @@
       - htop
       - ncdu
       - screen
-      - ag
+      - the_silver_searcher
 
 - name: Install bash_it
   import_tasks: bash-it.yml
