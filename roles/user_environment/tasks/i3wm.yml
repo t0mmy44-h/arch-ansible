@@ -1,0 +1,20 @@
+---
+- name: Stow i3wm
+  command:
+    chdir: "/home/{{ item.key }}/dev/stashdot"
+    cmd: stow -t "/home/{{ item.key }}" i3wm
+  loop: "{{ local_users | dict2items }}"
+  become_user: tbh
+
+- name: Sudoers Wheel NOPASSWD
+  copy:
+    dest: "{{ item.filename }}"
+    content: |
+      "%wheel ALL=(ALL:ALL) NOPASSWD: {{ item.program }}"
+  loop:
+    - program: /usr/bin/netctl-auto 
+      filename: /etc/sudoers.d/netctl-auto
+    - program: /usr/bin/wg-quick
+      filename: /etc/sudoers.d/wg-quick
+    - program: /usr/bin/xbacklight
+      filename: /etc/sudoers.d/xbacklight

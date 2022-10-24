@@ -30,6 +30,9 @@
       - ansible
       - python3
       - python-pip
+      - wpa_supplicant
+      - wireguard-tools
+      - dhcpcd
     state: present
 
 - name: Install Hashicorp Python stuff

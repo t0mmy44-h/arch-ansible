@@ -1,0 +1,20 @@
+---
+- name: Stow nvim
+  command:
+    chdir: "/home/{{ item.key }}/dev/stashdot"
+    cmd: stow -t "/home/{{ item.key }}" nvim
+  loop: "{{ local_users | dict2items }}"
+  become_user: tbh
+
+- name: Clone Shuogo/dein
+  git:
+    repo: git@github.com:Shuogo/dein.vim.git
+    accept_hostkey: yes
+    dest: "/home/{{ item.key }}/.config/nvim/dein/repos/github.com/Shougo/dein.vim"
+    key_file: "/home/{{ item.key }}/.ssh/{{ item.key }}@{{ ansible_facts['hostname'] }}"
+  loop: "{{ local_users | dict2items }}"
+  become_user: tbh
+
+- name: Run dein#install()
+  command: printf "call dein#install()" | nvim -es
+  become_user: tbh

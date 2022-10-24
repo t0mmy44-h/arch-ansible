@@ -71,6 +71,7 @@
       - htop
       - ncdu
       - screen
+      - ag
 
 - name: Install bash_it
   import_tasks: bash-it.yml
@@ -93,6 +94,7 @@
       - rsync
       - openconnect
       - jq
+      - playerctl
 
 - name: Enable core services
   ansible.builtin.systemd:
