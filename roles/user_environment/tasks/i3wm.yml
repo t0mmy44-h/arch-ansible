@@ -10,7 +10,7 @@
   copy:
     dest: "{{ item.filename }}"
     content: |
-      "%wheel ALL=(ALL:ALL) NOPASSWD: {{ item.program }}"
+      %wheel ALL=(ALL:ALL) NOPASSWD: {{ item.program }}
   loop:
     - program: /usr/bin/netctl-auto 
       filename: /etc/sudoers.d/netctl-auto
