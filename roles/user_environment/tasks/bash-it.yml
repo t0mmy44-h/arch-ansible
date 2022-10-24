@@ -9,13 +9,13 @@
 
 - name: Bash it theme shim directory
   file:
-    path: "/home/{{ item.key }}/.bash_it/do-what-I-say"
+    path: "/home/{{ item.key }}/.bash_it/themes/do-what-I-say"
     state: directory
   loop: "{{ local_users | dict2items }}"
 
 - name: Bash it theme shim file
   file:
-    path: "/home/{{ item.key }}/.bash_it/do-what-I-say/do-what-I-say.theme.bash"
+    path: "/home/{{ item.key }}/.bash_it/themes/do-what-I-say/do-what-I-say.theme.bash"
     state: touch
   loop: "{{ local_users | dict2items }}"
 
