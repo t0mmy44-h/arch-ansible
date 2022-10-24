@@ -19,11 +19,15 @@
       - lightdm-gtk-greeter
       - xautolock
 
+- name: Remove xbacklight
+  community.general.pacman:
+    state: absent
+    name: xorg-xbacklight
+
 - name: Re-add acpilight
   community.general.pacman:
     state: present
     name: acpilight
-    extra_args: --noconfirm
 
 - name: Configure redshift
   copy:
