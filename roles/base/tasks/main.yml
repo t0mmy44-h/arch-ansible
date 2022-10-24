@@ -56,3 +56,6 @@
 
 - name: Configure AUR support
   include_tasks: aur.yml
+
+- name: Enable Wheel
+  include_tasks: wheel.yml

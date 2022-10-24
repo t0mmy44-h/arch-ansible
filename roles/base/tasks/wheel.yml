@@ -1,0 +1,6 @@
+---
+- name: Uncomment Wheel in Sudoers
+  replace:
+    path: /etc/sudoers
+    regexp: '^#%wheel ALL=(ALL:ALL) ALL$'
+    replace: '%wheel ALL=(ALL:ALL) ALL'
