@@ -23,6 +23,7 @@
   community.general.pacman:
     state: present
     name: acpilight
+    extra_args: --noconfirm
 
 - name: Configure redshift
   copy:
