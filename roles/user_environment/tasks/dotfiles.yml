@@ -11,7 +11,7 @@
     repo: git@github.com:t0mmy44-h/stashdot.git
     accept_hostkey: yes
     dest: "/home/{{ item.key }}/dev/stashdot"
-    key_file: "/home/{{ item.key }}/.ssh/tbh@{{ ansible_facts['hostname'] }}"
+    key_file: "/home/{{ item.key }}/.ssh/{{ item.key }}@{{ ansible_facts['hostname'] }}"
   loop: "{{ local_users | dict2items }}"
   become_user: tbh
 
