@@ -1,4 +1,9 @@
 ---
+- name: Remove acpilight
+  community.general.pacman:
+    state: absent
+    name: acpilight
+
 - name: Install Xorg and display
   community.general.pacman:
     state: present
@@ -13,6 +18,11 @@
       - lightdm
       - lightdm-gtk-greeter
       - xautolock
+
+- name: Re-add acpilight
+  community.general.pacman:
+    state: present
+    name: acpilight
 
 - name: Configure redshift
   copy:
