@@ -120,7 +120,6 @@
     - bluetooth
     - lightdm
     - docker
-    - dhcpcd
 
 - name: Enable user services
   become_user: tbh
