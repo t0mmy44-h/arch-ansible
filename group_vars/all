@@ -13,7 +13,6 @@ local_users:
       {{ lookup('hashivault', local_user_tbh, 'key1', mount_point=vault_secret_mount, version=2) }}
 
 bplugins:
-  - alias-completion
   - aws
   - base
   - docker-compose
